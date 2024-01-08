@@ -1,8 +1,9 @@
 const initSlider = () => {
-    const imageList = document.querySelector(".slider-wrapper .center_div");
-    const slideButtons = document.querySelectorAll(".slider-wrapper .slide-button");
-    let maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+    const sliderWrapper = document.querySelector(".slider-wrapper");
+    const imageList = sliderWrapper.querySelector(".center_div");
+    const slideButtons = sliderWrapper.querySelectorAll(".slide-button");
 
+    let maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
     const scrollAmount = imageList.clientWidth;
 
     const handleSlideButtons = () => {
@@ -10,7 +11,7 @@ const initSlider = () => {
         slideButtons[1].style.visibility = imageList.scrollLeft >= maxScrollLeft ? "hidden" : "visible";
     };
 
-    document.querySelector(".slider-wrapper").addEventListener("click", (event) => {
+    sliderWrapper.addEventListener("click", (event) => {
         const button = event.target.closest(".slide-button");
         if (button) {
             const direction = button.id === "prev-slide" ? -1 : 1;
